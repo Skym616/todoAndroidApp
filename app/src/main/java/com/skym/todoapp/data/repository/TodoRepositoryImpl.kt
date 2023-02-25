@@ -36,7 +36,13 @@ class TodoRepositoryImpl(private val todoDao: TodoDao) : TodoRepository {
         TODO("Not yet implemented")
     }
 
-    override fun deleteTodo(idTodo: Int): Flow<Response<String>> {
-        TODO("Not yet implemented")
+    override fun deleteTodo(todo: Todo): Flow<Response<String>> = flow {
+        emit(Response.Loading)
+        try {
+            todoDao.deleteTodo(todo = todo)
+            emit(Response.Success(todo.title))
+        } catch (error: Exception) {
+            emit(Response.Error(error.message!!))
+        }
     }
 }

@@ -18,21 +18,29 @@ class TodoViewModel(private val repository: TodoRepository) : ViewModel() {
     var getAllTodoListResponse by mutableStateOf<Response<List<Todo>>>(Response.Loading)
         private set
 
+    var deleteTodoResponse by mutableStateOf<Response<String>>(Response.Loading)
+        private set
+
     init {
         getAllTodo()
     }
 
-    private fun getAllTodo() = viewModelScope.launch(Dispatchers.IO) {
+    private fun getAllTodo() = viewModelScope.launch {
         repository.getAllTodo().collect {
             getAllTodoListResponse = it
             Log.i("TODO", it.toString() + "Merkdee")
         }
     }
 
-    fun addTodo(todo: Todo) = viewModelScope.launch(Dispatchers.IO) {
+    fun addTodo(todo: Todo) = viewModelScope.launch {
         repository.addTodo(todo).collect {
             Log.i("TODO", it.toString() + "pourquoi")
         }
     }
 
+    fun deleteTodo(todo: Todo) = viewModelScope.launch {
+        repository.deleteTodo(todo).collect {
+            deleteTodoResponse = it
+        }
+    }
 }

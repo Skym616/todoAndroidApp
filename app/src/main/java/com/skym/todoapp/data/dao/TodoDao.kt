@@ -7,14 +7,14 @@ import com.skym.todoapp.domain.model.Todo
 interface TodoDao {
 
     @Query("SELECT * FROM Todo")
-    fun getAllTodo(): List<Todo>
+    suspend fun getAllTodo(): List<Todo>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertTodo(todo: Todo)
+    suspend fun insertTodo(todo: Todo)
 
     @Update
-    fun updateTodo(todo: Todo)
+    suspend fun updateTodo(todo: Todo)
 
     @Delete
-    fun deleteTodo(todo: Todo)
+    suspend fun deleteTodo(todo: Todo)
 }
