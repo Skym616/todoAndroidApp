@@ -8,6 +8,9 @@ import androidx.room.PrimaryKey
 data class Todo(
     @PrimaryKey(autoGenerate = true) val id: Int?,
     @ColumnInfo(name = "title") val title: String,
-    @ColumnInfo(name = "content") val content: String,
-    @ColumnInfo(name = "complete") val complete: Boolean
+    @ColumnInfo(name = "description") val description: String,
+    @ColumnInfo(name = "complete") val complete: Boolean,
+    @ColumnInfo(name = "date") val date: String,
+    @ColumnInfo(name = "end_time") val endTime: String,
+    @ColumnInfo(name = "start_time") val startTime: String,
 )

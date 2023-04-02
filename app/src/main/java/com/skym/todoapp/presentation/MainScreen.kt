@@ -41,7 +41,7 @@ fun MainScreen() {
     } else {
         Brush.horizontalGradient(
             colors = listOf(
-                MaterialTheme.colors.secondary,
+                MaterialTheme.colors.primaryVariant,
                 MaterialTheme.colors.secondary,
             ),
         )
