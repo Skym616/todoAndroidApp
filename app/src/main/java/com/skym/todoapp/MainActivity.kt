@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val appCenterKey =  BuildConfig.APPCENTER_KEY
+        val appCenterKey = BuildConfig.APPCENTER_KEY
         AppCenter.start(
             application,
             appCenterKey,
